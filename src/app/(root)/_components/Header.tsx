@@ -1,12 +1,13 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
-// import { api } from "../../../../convex/_generated/api";
+import { api } from "../../../../convex/_generated/api";
 import Link from "next/link";
 import { Blocks, Code2, Sparkles } from "lucide-react";
 // import ThemeSelector from "./ThemeSelector";
 import HeaderProfileBtn from "./HeaderProfileBtn";
 import { SignedIn } from "@clerk/nextjs";
 import LanguageSelector from "./LanguageSelector";
+// import LanguageSelector from "./LanguageSelector";
 // import RunButton from "./RunButton";
 
 async function Header() {

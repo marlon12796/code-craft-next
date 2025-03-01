@@ -1,5 +1,5 @@
 import { Monaco } from '@monaco-editor/react';
-// import { Id } from '../../convex/_generated/dataModel';
+import { Id } from '../../convex/_generated/dataModel';
 
 export interface Theme {
 	id: string;
@@ -56,7 +56,7 @@ export interface CodeEditorState {
 }
 
 export interface Snippet {
-	// _id: Id<'snippets'>;
+	_id: Id<'snippets'>;
 	_creationTime: number;
 	userId: string;
 	language: string;
