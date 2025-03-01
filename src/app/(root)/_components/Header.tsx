@@ -8,7 +8,6 @@ import ThemeSelector from './ThemeSelector';
 import HeaderProfileBtn from './HeaderProfileBtn';
 import { SignedIn } from '@clerk/nextjs';
 import LanguageSelector from './LanguageSelector';
-// import LanguageSelector from "./LanguageSelector";
 import RunButton from './RunButton';
 
 async function Header() {
