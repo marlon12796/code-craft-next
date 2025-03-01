@@ -1,5 +1,5 @@
 import { Monaco } from '@monaco-editor/react';
-import { Id } from '../../convex/_generated/dataModel';
+import { Id } from '@api/_generated/dataModel';
 import * as monaco from 'monaco-editor';
 
 export interface Theme {
