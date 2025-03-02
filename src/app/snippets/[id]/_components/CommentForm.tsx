@@ -1,3 +1,4 @@
+'use client';
 import { CodeIcon, SendIcon } from 'lucide-react';
 import { useState } from 'react';
 import CommentContent from './CommentContent';
@@ -7,7 +8,7 @@ interface CommentFormProps {
 	isSubmitting: boolean;
 }
 
-function CommentForm({ isSubmitting, onSubmit }: CommentFormProps) {
+const CommentForm = ({ isSubmitting, onSubmit }: CommentFormProps) => {
 	const [comment, setComment] = useState('');
 	const [isPreview, setIsPreview] = useState(false);
 
@@ -98,5 +99,5 @@ function CommentForm({ isSubmitting, onSubmit }: CommentFormProps) {
 			</div>
 		</form>
 	);
-}
+};
 export default CommentForm;

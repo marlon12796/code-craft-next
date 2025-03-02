@@ -1,3 +1,4 @@
+'use client';
 import { SignInButton, useUser } from '@clerk/nextjs';
 import { Id } from '@api/_generated/dataModel';
 import { useState } from 'react';
