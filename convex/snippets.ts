@@ -146,7 +146,7 @@ export const getSnippets = query({
 		return snippets;
 	},
 });
-
+export type SnippetsTypeFn = Awaited<ReturnType<typeof getSnippets>>;
 export const getSnippetById = query({
 	args: { snippetId: v.id('snippets') },
 	handler: async (ctx, args) => {
