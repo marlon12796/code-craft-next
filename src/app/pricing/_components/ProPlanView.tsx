@@ -1,15 +1,16 @@
 import NavigationHeader from '@/components/NavigationHeader';
 import { ArrowRight, Command, Star } from 'lucide-react';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 /**
  * ProPlanView component renders the view for the Pro Plan.
  * It includes a navigation header, a centered content area with a gradient background,
  * and a card displaying the Pro Plan details.
  *
- * @returns {JSX.Element} The JSX code for the ProPlanView component.
+ * @returns {ReactNode} The JSX code for the ProPlanView component.
  */
-const ProPlanView = () => {
+const ProPlanView = (): ReactNode => {
 	return (
 		<div className=' bg-[#0a0a0f]'>
 			<NavigationHeader />
