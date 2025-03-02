@@ -19,15 +19,18 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
+    "react-syntax-highlighter": "^15.6.1",
     "svix": "^1.61.0",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@clerk/types": "^4.47.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
     "postcss": "^8.5.3",
