@@ -10,6 +10,7 @@ import { BookOpen, Code, Grid, Layers, Search, Tag, X } from 'lucide-react';
 import SnippetCard from './_components/SnippetCard';
 import useSnippetsStore from '@/store/useSnippetsStore';
 import { shallow } from 'zustand/shallow';
+import Image from 'next/image';
 
 const SnippetsPage = () => {
 	const { snippets, searchQuery, selectedLanguage, view, searchSnippets, chooseLanguage, changeView, loadSnippets } =
@@ -23,7 +24,7 @@ const SnippetsPage = () => {
 		if (snippetsData && !shallow(snippets, snippetsData)) {
 			loadSnippets(snippetsData);
 		}
-	}, [snippetsData, snippets]);
+	}, [snippetsData, snippets, loadSnippets]);
 	if (snippets.length <= 0) {
 		return (
 			<div className='min-h-screen'>
@@ -115,7 +116,7 @@ const SnippetsPage = () => {
 								}`}
 							>
 								<div className='flex items-center gap-2'>
-									<img src={`/${lang}.png`} alt={lang} className='w-4 h-4 object-contain' />
+									<Image src={`/${lang}.png`} alt={lang} className='size-4 object-contain' width={55} height={55} />
 									<span className='text-sm'>{lang}</span>
 								</div>
 							</button>

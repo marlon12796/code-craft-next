@@ -1,4 +1,3 @@
-import { Monaco } from '@monaco-editor/react';
 import { Id } from '@api/_generated/dataModel';
 import * as monaco from 'monaco-editor';
 
