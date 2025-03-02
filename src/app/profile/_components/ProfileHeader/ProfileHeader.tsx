@@ -1,8 +1,9 @@
 import { useQuery } from 'convex/react';
 import { api } from '@api/_generated/api';
-import { Activity, Code2, Star, Timer, TrendingUp, Trophy, UserIcon, Zap } from 'lucide-react';
+import { Activity, Code2, Star, Timer, TrendingUp, Trophy, UserIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ProfileHeaderProps } from './ProfileHeader.types';
+import { AvatarProfileHeader } from './AvatarProfileHeader';
 
 export const ProfileHeader = ({ userStats, userData, user }: ProfileHeaderProps) => {
 	const starredSnippets = useQuery(api.snippets.getStarredSnippets);
@@ -55,25 +56,7 @@ export const ProfileHeader = ({ userStats, userData, user }: ProfileHeaderProps)
 		>
 			<div className='absolute inset-0 bg-grid-white/[0.02] bg-[size:32px]' />
 			<div className='relative flex items-center gap-8'>
-				<div className='relative group'>
-					<div
-						className='absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full 
-          blur-xl opacity-50 group-hover:opacity-75 transition-opacity'
-					/>
-					<img
-						src={user.imageUrl}
-						alt='Profile'
-						className='w-24 h-24 rounded-full border-4 border-gray-800/50 relative z-10 group-hover:scale-105 transition-transform'
-					/>
-					{userData.isPro && (
-						<div
-							className='absolute -top-2 -right-2 bg-gradient-to-r from-purple-500 to-purple-600 p-2
-             rounded-full z-20 shadow-lg animate-pulse'
-						>
-							<Zap className='w-4 h-4 text-white' />
-						</div>
-					)}
-				</div>
+				<AvatarProfileHeader user={user} userData={userData} />
 				<div>
 					<div className='flex items-center gap-3 mb-2'>
 						<h1 className='text-3xl font-bold text-white'>{userData.name}</h1>
