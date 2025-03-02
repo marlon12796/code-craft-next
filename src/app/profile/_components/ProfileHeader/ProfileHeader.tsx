@@ -2,35 +2,9 @@ import { useQuery } from 'convex/react';
 import { api } from '@api/_generated/api';
 import { Activity, Code2, Star, Timer, TrendingUp, Trophy, UserIcon, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Id } from '@api/_generated/dataModel';
+import { ProfileHeaderProps } from './ProfileHeader.types';
 
-import { UserResource } from '@clerk/types';
-
-interface ProfileHeaderProps {
-	userStats: {
-		totalExecutions: number;
-		languagesCount: number;
-		languages: string[];
-		last24Hours: number;
-		favoriteLanguage: string;
-		languageStats: Record<string, number>;
-		mostStarredLanguage: string;
-	};
-	userData: {
-		_id: Id<'users'>;
-		_creationTime: number;
-		proSince?: number | undefined;
-		lemonSqueezyCustomerId?: string | undefined;
-		lemonSqueezyOrderId?: string | undefined;
-		name: string;
-		userId: string;
-		email: string;
-		isPro: boolean;
-	};
-	user: UserResource;
-}
-
-function ProfileHeader({ userStats, userData, user }: ProfileHeaderProps) {
+export const ProfileHeader = ({ userStats, userData, user }: ProfileHeaderProps) => {
 	const starredSnippets = useQuery(api.snippets.getStarredSnippets);
 	const STATS = [
 		{
@@ -162,5 +136,5 @@ function ProfileHeader({ userStats, userData, user }: ProfileHeaderProps) {
 			</div>
 		</div>
 	);
-}
+};
 export default ProfileHeader;

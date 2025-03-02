@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { api } from '../../../convex/_generated/api';
 // import NavigationHeader from '@/components/NavigationHeader';
-import ProfileHeader from './_components/ProfileHeader';
+import ProfileHeader from './_components/ProfileHeader/ProfileHeader';
 import ProfileHeaderSkeleton from './_components/ProfileHeaderSkeleton';
 import { ChevronRight, Clock, Code, ListVideo, Loader2, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
