@@ -1,9 +1,13 @@
 import { ChevronRight, Clock, Star } from 'lucide-react';
-import { SnippetsTypeFn } from '@api/snippets';
 import Image from 'next/image';
 import Link from 'next/link';
 import StarButton from '@/components/StarButton';
-export const StarsTab = ({ starredSnippets }: { starredSnippets: SnippetsTypeFn }) => {
+import { useQuery } from 'convex/react';
+import { api } from '@api/_generated/api';
+
+export const StarsTab = () => {
+	const starredSnippets = useQuery(api.snippets.getStarredSnippets);
+
 	return (
 		<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 			{starredSnippets?.map((snippet) => (

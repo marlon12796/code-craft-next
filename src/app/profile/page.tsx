@@ -7,35 +7,23 @@ import { api } from '@api/_generated/api';
 import NavigationHeader from '@/components/NavigationHeader';
 import ProfileHeader from './_components/ProfileHeader/ProfileHeader';
 import ProfileHeaderSkeleton from './_components/ProfileHeaderSkeleton';
-import { ChevronRight, Clock, Code, ListVideo, Loader2, Star } from 'lucide-react';
+import { ChevronRight, Code, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import CodeBlock from './_components/CodeBlock';
 import { StarsTab } from './_components/Tabs/StarsTab';
-
-const TABS = [
-	{
-		id: 'executions',
-		label: 'Code Executions',
-		icon: ListVideo,
-	},
-	{
-		id: 'starred',
-		label: 'Starred Snippets',
-		icon: Star,
-	},
-];
+import { MenuTabs, type MenuTabsTypes } from './_components/Tabs/MenuTabs';
 
 const ProfilePage = () => {
 	const { user, isLoaded } = useUser();
 	const router = useRouter();
-	const [activeTab, setActiveTab] = useState<'executions' | 'starred'>('executions');
-
+	const [activeTab, setActiveTab] = useState<MenuTabsTypes>('executions');
+	const onChangeActiveTab = (tab: MenuTabsTypes) => {
+		setActiveTab(tab);
+	};
 	const userStats = useQuery(api.codeExecutions.getUserStats, {
 		userId: user?.id ?? '',
 	});
-
-	const starredSnippets = useQuery(api.snippets.getStarredSnippets);
 
 	const {
 		results: executions,
@@ -75,33 +63,7 @@ const ProfilePage = () => {
         shadow-black/50 border border-gray-800/50 backdrop-blur-xl overflow-hidden'
 				>
 					{/* Tabs */}
-					<div className='border-b border-gray-800/50'>
-						<div className='flex space-x-1 p-4'>
-							{TABS.map((tab) => (
-								<button
-									key={tab.id}
-									onClick={() => setActiveTab(tab.id as 'executions' | 'starred')}
-									className={`group flex items-center gap-2 px-6 py-2.5 rounded-lg transition-all duration-200 relative overflow-hidden ${
-										activeTab === tab.id ? 'text-blue-400' : 'text-gray-400 hover:text-gray-300'
-									}`}
-								>
-									{activeTab === tab.id && (
-										<motion.div
-											layoutId='activeTab'
-											className='absolute inset-0 bg-blue-500/10 rounded-lg'
-											transition={{
-												type: 'spring',
-												bounce: 0.2,
-												duration: 0.6,
-											}}
-										/>
-									)}
-									<tab.icon className='w-4 h-4 relative z-10' />
-									<span className='text-sm font-medium relative z-10'>{tab.label}</span>
-								</button>
-							))}
-						</div>
-					</div>
+					<MenuTabs onChangeActiveTab={onChangeActiveTab} activeTab={activeTab} />
 
 					{/* Tab content */}
 					<AnimatePresence mode='wait'>
@@ -197,9 +159,8 @@ const ProfilePage = () => {
 									)}
 								</div>
 							)}
-
 							{/* ACTIVE TAB IS STARS: */}
-							{activeTab === 'starred' ? <StarsTab starredSnippets={starredSnippets ?? []} /> : <></>}
+							{activeTab === 'starred' && <StarsTab />}
 						</motion.div>
 					</AnimatePresence>
 				</div>
