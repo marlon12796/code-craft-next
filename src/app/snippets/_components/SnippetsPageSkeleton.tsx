@@ -1,4 +1,4 @@
-import { CardSkeleton } from './SnippetsCardSkeleton';
+import { CardSkeleton } from './SnippetCardSkeleton';
 
 const SnippetsPageSkeleton = () => {
 	return (
