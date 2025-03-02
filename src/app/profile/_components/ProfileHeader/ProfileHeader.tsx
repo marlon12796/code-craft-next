@@ -2,7 +2,7 @@ import { useQuery } from 'convex/react';
 import { api } from '@api/_generated/api';
 import { Activity, Code2, Star, Timer, TrendingUp, Trophy, UserIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ProfileHeaderProps } from './ProfileHeader.types';
+import { type ProfileHeaderProps } from './profileHeaderTypes';
 import { AvatarProfileHeader } from './AvatarProfileHeader';
 
 export const ProfileHeader = ({ userStats, userData, user }: ProfileHeaderProps) => {

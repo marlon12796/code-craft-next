@@ -15,16 +15,13 @@ import { StarsTab } from './_components/Tabs/StarsTab';
 import { MenuTabs, type MenuTabsTypes } from './_components/Tabs/MenuTabs';
 
 const ProfilePage = () => {
-	const { user, isLoaded } = useUser();
 	const router = useRouter();
+	const { user, isLoaded } = useUser();
 	const [activeTab, setActiveTab] = useState<MenuTabsTypes>('executions');
-	const onChangeActiveTab = (tab: MenuTabsTypes) => {
-		setActiveTab(tab);
-	};
+
 	const userStats = useQuery(api.codeExecutions.getUserStats, {
 		userId: user?.id ?? '',
 	});
-
 	const {
 		results: executions,
 		status: executionStatus,
@@ -37,8 +34,11 @@ const ProfilePage = () => {
 		},
 		{ initialNumItems: 5 }
 	);
-
 	const userData = useQuery(api.users.getUser, { userId: user?.id ?? '' });
+
+	const onChangeActiveTab = (tab: MenuTabsTypes) => {
+		setActiveTab(tab);
+	};
 
 	const handleLoadMore = () => {
 		if (executionStatus === 'CanLoadMore') loadMore(5);

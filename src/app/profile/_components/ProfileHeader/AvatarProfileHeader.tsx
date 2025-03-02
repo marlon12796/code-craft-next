@@ -1,7 +1,7 @@
 import { UserResource } from '@clerk/types';
 import { Zap } from 'lucide-react';
 import React from 'react';
-import { UserDataTypes } from './ProfileHeader.types';
+import { UserDataTypes } from './profileHeaderTypes';
 
 export const AvatarProfileHeader = ({ user, userData }: { user: UserResource; userData: UserDataTypes }) => {
 	return (
