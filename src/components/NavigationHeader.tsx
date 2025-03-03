@@ -28,7 +28,7 @@ export const NavigationHeader = () => {
 									className='block text-lg font-semibold bg-gradient-to-r
                  from-blue-400 via-blue-300 to-purple-400 text-transparent bg-clip-text'
 								>
-									CodeCraft
+									CodeMagic
 								</span>
 								<span className='block text-xs text-blue-400/60 font-medium'>Interactive Code Editor</span>
 							</div>
