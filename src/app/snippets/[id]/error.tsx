@@ -3,7 +3,7 @@
 import NavigationHeader from '@/components/NavigationHeader';
 import Link from 'next/link';
 import Image from 'next/image';
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function Error() {
 	const sections = [
 		{
 			title: 'Pricing',

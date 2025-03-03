@@ -25,7 +25,7 @@ const NotFound = () => {
 					<div className='w-full lg:w-1/2'>
 						<p className='text-base font-medium text-blue-500 dark:text-blue-400'>404 error</p>
 						<h1 className='mt-3 text-4xl font-semibold text-gray-200 md:text-5xl'>We lost this page</h1>
-						<p className='mt-4 text-gray-500 dark:text-gray-400'>Sorry, the page you are looking for doesn't exist.</p>
+						<p className='mt-4 text-gray-500 dark:text-gray-400'>Sorry, the page you are looking for doesn&#39;t exist.</p>
 
 						<div className='flex items-center mt-6 gap-x-3'>
 							<Link
