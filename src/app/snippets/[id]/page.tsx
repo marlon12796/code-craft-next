@@ -1,24 +1,19 @@
 import { api } from '@api/_generated/api';
 import { Id } from '@api/_generated/dataModel';
-import SnippetLoadingSkeleton from './_components/SnippetLoadingSkeleton';
 import NavigationHeader from '@/components/NavigationHeader';
 import { Clock, Code, MessageSquare, User } from 'lucide-react';
-
 import CopyButton from './_components/CopyButton';
 import Comments from './_components/Comments';
 import Image from 'next/image';
-import { ConvexHttpClient } from 'convex/browser';
 import { EditorSnippet } from './_components/EditorSnippet';
-
+import { fetchQuery } from 'convex/nextjs';
 const SnippetDetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const snippetId = (await params).id;
-	const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
-	const snippet = await convex.query(api.snippets.getSnippetById, {
+	const snippet = await fetchQuery(api.snippets.getSnippetById, {
 		snippetId: snippetId as Id<'snippets'>,
 	});
-	const comments = await convex.query(api.snippets.getComments, { snippetId: snippetId as Id<'snippets'> });
-
-	return snippet !== undefined ? (
+	const comments = await fetchQuery(api.snippets.getComments, { snippetId: snippetId as Id<'snippets'> });
+	return (
 		<div className='min-h-screen bg-[#0a0a0f]'>
 			<NavigationHeader />
 
@@ -77,8 +72,6 @@ const SnippetDetailPage = async ({ params }: { params: Promise<{ id: string }> }
 				</div>
 			</main>
 		</div>
-	) : (
-		<SnippetLoadingSkeleton />
 	);
 };
 export default SnippetDetailPage;
