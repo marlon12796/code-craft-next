@@ -3,7 +3,7 @@
 import { Check, Copy } from 'lucide-react';
 import { useState } from 'react';
 
-function CopyButton({ code }: { code: string }) {
+const CopyButton = ({ code }: { code: string }) => {
 	const [copied, setCopied] = useState(false);
 
 	const copyToClipboard = async () => {
@@ -25,6 +25,6 @@ function CopyButton({ code }: { code: string }) {
 			)}
 		</button>
 	);
-}
+};
 
 export default CopyButton;

@@ -1,5 +1,4 @@
 'use client';
-
 import { useQuery } from 'convex/react';
 import { api } from '@api/_generated/api';
 import { useEffect } from 'react';
@@ -16,10 +15,7 @@ const SnippetsPage = () => {
 	const { snippets, searchQuery, selectedLanguage, view, searchSnippets, chooseLanguage, changeView, loadSnippets } =
 		useSnippetsStore();
 
-	// Obtener datos de snippets desde Convex
 	const snippetsData = useQuery(api.snippets.getSnippets);
-
-	// Cargar snippets en el store cuando se obtienen datos nuevos
 	useEffect(() => {
 		if (snippetsData && !shallow(snippets, snippetsData)) {
 			loadSnippets(snippetsData);

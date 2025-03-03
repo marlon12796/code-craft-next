@@ -1,23 +1,22 @@
-'use client';
-
-import { useQuery } from 'convex/react';
-import { useParams } from 'next/navigation';
 import { api } from '@api/_generated/api';
 import { Id } from '@api/_generated/dataModel';
 import SnippetLoadingSkeleton from './_components/SnippetLoadingSkeleton';
 import NavigationHeader from '@/components/NavigationHeader';
 import { Clock, Code, MessageSquare, User } from 'lucide-react';
-import { Editor } from '@monaco-editor/react';
-import { defineMonacoThemes, LANGUAGE_CONFIG } from '@/app/(root)/_constants';
+
 import CopyButton from './_components/CopyButton';
 import Comments from './_components/Comments';
 import Image from 'next/image';
+import { ConvexHttpClient } from 'convex/browser';
+import { EditorSnippet } from './_components/EditorSnippet';
 
-const SnippetDetailPage = () => {
-	const snippetId = useParams().id;
-
-	const snippet = useQuery(api.snippets.getSnippetById, { snippetId: snippetId as Id<'snippets'> });
-	const comments = useQuery(api.snippets.getComments, { snippetId: snippetId as Id<'snippets'> });
+const SnippetDetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+	const snippetId = (await params).id;
+	const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+	const snippet = await convex.query(api.snippets.getSnippetById, {
+		snippetId: snippetId as Id<'snippets'>,
+	});
+	const comments = await convex.query(api.snippets.getComments, { snippetId: snippetId as Id<'snippets'> });
 
 	return snippet !== undefined ? (
 		<div className='min-h-screen bg-[#0a0a0f]'>
@@ -71,24 +70,7 @@ const SnippetDetailPage = () => {
 							</div>
 							<CopyButton code={snippet.code} />
 						</div>
-						<Editor
-							height='600px'
-							language={LANGUAGE_CONFIG[snippet.language].monacoLanguage}
-							value={snippet.code}
-							theme='vs-dark'
-							beforeMount={defineMonacoThemes}
-							options={{
-								minimap: { enabled: false },
-								fontSize: 16,
-								readOnly: true,
-								automaticLayout: true,
-								scrollBeyondLastLine: false,
-								padding: { top: 16 },
-								renderWhitespace: 'selection',
-								fontFamily: '"Fira Code", "Cascadia Code", Consolas, monospace',
-								fontLigatures: true,
-							}}
-						/>
+						<EditorSnippet snippet={snippet} />
 					</div>
 
 					<Comments snippetId={snippet._id} />
