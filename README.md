@@ -1,8 +1,8 @@
-<h1 align="center">✨ TechMagic - Next.js 15 ✨</h1>
+<h1 align="center">✨ CodeMagic - Next.js 15 ✨</h1>
 
 ![Demo App](/public/screenshot-for-readme.png)
 
-[Watch Full Demo on YouTube](https://youtu.be/fGkRQgf6Scw)
+
 
 ## 🚀 Features:
 

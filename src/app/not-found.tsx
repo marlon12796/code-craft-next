@@ -21,7 +21,7 @@ const NotFound = () => {
 		<section className=''>
 			<div className='max-w-[1800px] mx-auto p-4'>
 				<Header />
-				<div className='grid grid-cols-1 px-6 mx-auto gap-4 lg:flex lg:items-center lg:gap-12 lg:grid-cols-2'>
+				<div className='grid grid-cols-1 px-6  mx-auto gap-4 lg:flex lg:items-center lg:gap-12 lg:grid-cols-2'>
 					<div className='w-full lg:w-1/2'>
 						<p className='text-base font-medium text-blue-500 dark:text-blue-400'>404 error</p>
 						<h1 className='mt-3 text-4xl font-semibold text-gray-200 md:text-5xl'>We lost this page</h1>
